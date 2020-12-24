@@ -128,7 +128,7 @@ class S3Helper {
     const contentType = mime.getType(fileName);
     const fStream = fs.createReadStream(path.join(basePath, fileName));
     const uploadParams = {
-      ACL: 'public-read',
+      ACL: null,
       Key: fileName,
       Body: shouldBeZipped ? gzipStream(fStream) : fStream,
       ContentMD5: Buffer.from(toUpload.hashes[fileName], 'hex').toString('base64'),
